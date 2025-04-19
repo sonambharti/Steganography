@@ -1,6 +1,7 @@
+@config "../tailwind.config.js";
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities;  
 
 body {
   margin: 0;
@@ -9,6 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url("/public/image/securelist_abs_7.jpg"); */
 }
 
 code {
