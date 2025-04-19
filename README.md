@@ -13,6 +13,8 @@ image with the secret message hidden inside.
 - React
 - TypeScript
 - Crypto JS
+- Tailwind CSS
+
 
 ## AES Technique
 The application uses the AES (Advanced Encryption Standard) technique to encrypt the secret message.
