@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CryptoJS from 'crypto-js';
-import { decodeMessageFromImage } from '../utils/steganography'; // local frontend decoder function
+import { decodeMessageFromImage } from '../utils/steganography.ts'; // local frontend decoder function
 import { useNavigate } from 'react-router-dom';
 
 const Decoder = () => {

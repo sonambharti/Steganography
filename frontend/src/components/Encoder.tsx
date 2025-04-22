@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CryptoJS from 'crypto-js';
-import { encodeMessageInImage } from '../utils/steganography'; // assumes encodeMessageInImage exists here
+import { encodeMessageInImage } from '../utils/steganography.ts'; // assumes encodeMessageInImage exists here
 import { useNavigate } from 'react-router-dom';
 
 const Encoder = () => {

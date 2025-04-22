@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Encoder from './components/Encoder';
-import Decoder from './components/Decoder';
+import Encoder from './components/Encoder.tsx';
+import Decoder from './components/Decoder.tsx';
 function App() {
   return (
     <BrowserRouter>
