@@ -1,7 +1,7 @@
 # Steganography Web App
 ## Author: [Sonam Bharti]
 ## Date: 19-04-2025
-## Description: This is a simple web application that uses steganography to hide secret messages in images.
+**Description:** This is a simple web application that uses steganography to hide secret messages in images.
 
 ## Introduction
 Steganography is the practice of concealing a secret message within a non-secret message, image,
@@ -29,5 +29,8 @@ corresponding bit of the secret message.
 
 ## Command to run this application locally.
 `npm start`
+
+## Command to create react app using typescript
+`npx create-react-app my-app --template typescript`
 
 
