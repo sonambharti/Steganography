@@ -1,34 +1,36 @@
-import React, { useState } from 'react';
-import CryptoJS from 'crypto-js';
-import { encodeMessageInImage } from '../utils/steganography.ts'; // assumes encodeMessageInImage exists here
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import CryptoJS from "crypto-js";
+import { encodeMessageInImage } from "../utils/steganography.ts"; // assumes encodeMessageInImage exists here
+import { useNavigate } from "react-router-dom";
 
 const Encoder = () => {
   const [image, setImage] = useState<File | null>(null);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [encrypt, setEncrypt] = useState(false);
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [encodedImageURL, setEncodedImageURL] = useState<string | null>(null);
-  const [originalPreviewURL, setOriginalPreviewURL] = useState<string | null>(null);
+  const [originalPreviewURL, setOriginalPreviewURL] = useState<string | null>(
+    null
+  );
 
   const navigate = useNavigate();
 
   const handleEncode = async () => {
     if (!image || !message) {
-      alert('Please select an image and enter a message.');
+      alert("Please select an image and enter a message.");
       return;
     }
 
     const img = new Image();
     img.src = URL.createObjectURL(image);
     img.onload = async () => {
-      const canvas = document.createElement('canvas');
+      const canvas = document.createElement("canvas");
       canvas.width = img.width;
       canvas.height = img.height;
 
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext("2d");
       if (!ctx) {
-        alert('Canvas context could not be created');
+        alert("Canvas context could not be created");
         return;
       }
 
@@ -43,7 +45,7 @@ const Encoder = () => {
       // Encode message into the canvas
       encodeMessageInImage(canvas, finalMessage); // this function should mutate the canvas
 
-      const stegoDataURL = canvas.toDataURL('image/png');
+      const stegoDataURL = canvas.toDataURL("image/png");
       setEncodedImageURL(stegoDataURL);
     };
   };
@@ -61,10 +63,10 @@ const Encoder = () => {
   };
 
   return (
-    <div className="p-6 max-w-5xl mx-auto bg-white shadow-xl rounded-2xl grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div className="p-6 max-w-5xl flex flex-col mx-auto bg-white shadow-xl rounded-2xl">
       {/* Upload & Encode Section */}
-      <div>
-        <div>
+      <div className="flex flex-row border-2 border-solid">
+        <div className="border-2 flex-1 border-solid">
           <h2 className="text-2xl font-bold mb-4">🖼️ Upload & Encode</h2>
 
           <input
@@ -76,7 +78,9 @@ const Encoder = () => {
 
           {originalPreviewURL && (
             <div className="mb-4">
-              <p className="text-gray-700 mb-1 font-semibold">Original Image:</p>
+              <p className="text-gray-700 mb-1 font-semibold">
+                Original Image:
+              </p>
               <img
                 src={originalPreviewURL}
                 alt="Original Preview"
@@ -100,7 +104,9 @@ const Encoder = () => {
               onChange={(e) => setEncrypt(e.target.checked)}
               className="mr-2"
             />
-            <label className="text-sm text-gray-700">Encrypt message using AES</label>
+            <label className="text-sm text-gray-700">
+              Encrypt message using AES
+            </label>
           </div>
 
           {encrypt && (
@@ -120,10 +126,9 @@ const Encoder = () => {
             🔐 Encode Message
           </button>
         </div>
-      
 
         {/* Output Section */}
-        <div className="text-center">
+        <div className="text-center border-2 flex-1 border-solid">
           <h2 className="text-2xl font-bold mb-4">🖼️ Encoded Output</h2>
           {encodedImageURL ? (
             <>
@@ -146,9 +151,9 @@ const Encoder = () => {
         </div>
       </div>
       {/* Redirect Button */}
-      <div className="mt-10 text-center">
+      <div className="relative pt-3 text-right">
         <button
-          onClick={() => navigate('/decoder')}
+          onClick={() => navigate("/decoder")}
           className="bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-xl shadow-md transition-all duration-200"
         >
           🔄 Go to Decoder Page
@@ -160,12 +165,11 @@ const Encoder = () => {
 
 export default Encoder;
 
+// const data = await encodeImage(formData); // expected: { downloadUrl }
 
-      // const data = await encodeImage(formData); // expected: { downloadUrl }
+// const response = await fetch(`http://localhost:5000${data.downloadUrl}`);
+// if (!response.ok) throw new Error('Failed to fetch encoded image');
 
-      // const response = await fetch(`http://localhost:5000${data.downloadUrl}`);
-      // if (!response.ok) throw new Error('Failed to fetch encoded image');
-
-      // const blob = await response.blob();
-      // const url = URL.createObjectURL(blob);
-      // setStegoURL(url);
+// const blob = await response.blob();
+// const url = URL.createObjectURL(blob);
+// setStegoURL(url);

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import CryptoJS from 'crypto-js';
-import { decodeMessageFromImage } from '../utils/steganography.ts'; // local frontend decoder function
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import CryptoJS from "crypto-js";
+import { decodeMessageFromImage } from "../utils/steganography.ts"; // local frontend decoder function
+import { useNavigate } from "react-router-dom";
 
 const Decoder = () => {
   const [image, setImage] = useState<File | null>(null);
@@ -9,7 +9,7 @@ const Decoder = () => {
   const [message, setMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [decrypt, setDecrypt] = useState(false);
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
@@ -37,13 +37,13 @@ const Decoder = () => {
     img.src = URL.createObjectURL(image);
 
     img.onload = () => {
-      const canvas = document.createElement('canvas');
+      const canvas = document.createElement("canvas");
       canvas.width = img.width;
       canvas.height = img.height;
 
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext("2d");
       if (!ctx) {
-        setMessage('❌ Failed to decode: canvas error.');
+        setMessage("❌ Failed to decode: canvas error.");
         setLoading(false);
         return;
       }
@@ -59,13 +59,13 @@ const Decoder = () => {
             finalMessage = bytes.toString(CryptoJS.enc.Utf8);
             if (!finalMessage) throw new Error();
           } catch (err) {
-            finalMessage = '🔐 Failed to decrypt message. Check password!';
+            finalMessage = "🔐 Failed to decrypt message. Check password!";
           }
         }
 
         setMessage(finalMessage);
       } catch (err) {
-        setMessage('❌ Failed to decode message.');
+        setMessage("❌ Failed to decode message.");
       }
 
       setLoading(false);
@@ -73,20 +73,22 @@ const Decoder = () => {
   };
 
   return (
-    <div className="p-6 max-w-5xl mx-auto mt-10 bg-white shadow-xl rounded-2xl grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div className="flex flex-col max-w-5xl p-6 mx-auto mt-10 bg-white shadow-xl rounded-2xl">
       {/* Redirect Button */}
-      <div className="mt-10 text-center">
+      <div className="mb-3">
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate("/")}
           className="bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-xl shadow-md transition-all duration-200"
         >
           🔄 Go to Encoder Page
         </button>
       </div>
-      <div className='flex border-2 border-solid'>
+      <div className="flex min-w-0 border-2 border-solid">
         {/* Upload & Controls */}
-        <div className='border-2 border-solid'>
-          <h2 className="text-2xl font-bold mb-4 text-gray-800">🔍 Decode Hidden Message</h2>
+        <div className="border-2 flex-1 border-solid">
+          <h2 className="text-2xl font-bold mb-4 text-gray-800">
+            🔍 Decode Hidden Message
+          </h2>
 
           <input
             type="file"
@@ -97,7 +99,9 @@ const Decoder = () => {
 
           {imagePreview && (
             <div className="mb-4">
-              <p className="text-gray-700 mb-1 font-semibold">Stego Image Preview:</p>
+              <p className="text-gray-700 mb-1 font-semibold">
+                Stego Image Preview:
+              </p>
               <img
                 src={imagePreview}
                 alt="To Decode"
@@ -113,7 +117,9 @@ const Decoder = () => {
               onChange={(e) => setDecrypt(e.target.checked)}
               className="mr-2"
             />
-            <label className="text-sm text-gray-700">Decrypt message using AES</label>
+            <label className="text-sm text-gray-700">
+              Decrypt message using AES
+            </label>
           </div>
 
           {decrypt && (
@@ -130,19 +136,23 @@ const Decoder = () => {
             onClick={handleDecode}
             disabled={loading}
             className={`w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition ${
-              loading ? 'opacity-50 cursor-not-allowed' : ''
+              loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            {loading ? '⏳ Decoding...' : '🔓 Decode Message'}
+            {loading ? "⏳ Decoding..." : "🔓 Decode Message"}
           </button>
         </div>
 
         {/* Output Section */}
-        <div className="text-center border-2 border-solid">
-          <h2 className="text-2xl font-bold mb-4 text-gray-800">📤 Decoded Output</h2>
+        <div className="text-center flex-1 border-2 border-solid">
+          <h2 className="text-2xl font-bold mb-4 text-gray-800">
+            📤 Decoded Output
+          </h2>
           {message ? (
             <div className="mt-2 p-4 border border-gray-300 bg-gray-50 rounded shadow-sm">
-              <p className="text-gray-700 font-semibold mb-2">Decoded Message:</p>
+              <p className="text-gray-700 font-semibold mb-2">
+                Decoded Message:
+              </p>
               <p className="font-mono text-gray-800 whitespace-pre-wrap break-words">
                 {message}
               </p>
