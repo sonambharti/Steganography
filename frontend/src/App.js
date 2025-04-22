@@ -5,8 +5,8 @@ import Decoder from './components/Decoder.tsx';
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-100 p-8">
-        <h1 className="text-3xl font-bold text-center mb-8">Steganography Tool</h1>
+      <div className="min-h-screen p-8">
+        <h1 className="text-3xl font-bold text-center mb-8 text-white">Steganography Tool</h1>
         <Routes>
           <Route path="/" element={<Encoder />} />
           <Route path="/decoder" element={<Decoder />} />
