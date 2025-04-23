@@ -33,7 +33,6 @@ corresponding bit of the secret message.
 ## Command to create react app using typescript
 `npx create-react-app my-app --template typescript`
 
-
 ## Command to setup this code locally.
 1. Git clone or download the to your local machine.
 2. Navigate to the project directory and install the required dependencies using `npm install`.
@@ -44,4 +43,8 @@ corresponding bit of the secret message.
 
 ## Conclusion
 This web application provides a simple yet effective way to utilize steganography for secure communication and data protection. By leveraging modern web technologies, users can easily encrypt and hide messages within images, ensuring their privacy and security in digital communications.
-Overall, this application demonstrates the power of combining encryption and steganography, making it a useful tool for anyone looking to protect sensitive information. Future improvements could include supporting additional image formats, enhancing the user interface, and implementing more advanced encryption techniques to further secure the hidden messages. Additionally, user authentication features could be integrated to restrict access to authorized users only, ensuring that sensitive messages are handled securely. Overall, this application serves as an excellent introduction to the concepts of steganography and encryption, providing a practical use case for developers and users alike.
+Overall, this application demonstrates the power of combining encryption and steganography, making it a useful tool for anyone looking to protect sensitive information. Future improvements could include supporting additional image formats, enhancing the user interface, and implementing more advanced encryption techniques to further secure the hidden messages. Additionally, user authentication features could be integrated to restrict access to authorized users only, ensuring that sensitive messages are handled securely. In the future, we aim to enhance the application's capabilities by incorporating user feedback and exploring new technologies. Ultimately, we believe that this project will not only educate users about these important security concepts but also empower them to take control of their own digital privacy. By continuing to innovate and improve, we hope to make this tool even more accessible and effective for everyone interested in safeguarding their digital communications. Overall, this application serves as an excellent introduction to the concepts of steganography and encryption, providing a practical use case for developers and users alike.
+
+
+# Note: 
+Please visit `https://steganography-nu.vercel.app/` to explore the features and functionalities of this web application.
